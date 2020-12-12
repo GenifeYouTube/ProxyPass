@@ -25,9 +25,9 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd("ProxyPass");
+        ADVERTISEMENT.setMotd("hardcore-servers.net | РА СИ Я");
         ADVERTISEMENT.setPlayerCount(0);
-        ADVERTISEMENT.setMaximumPlayerCount(20);
+        ADVERTISEMENT.setMaximumPlayerCount(100);
         ADVERTISEMENT.setSubMotd("hardcore-servers.net | РА СИ Я");
     }
 
