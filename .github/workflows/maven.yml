@@ -26,7 +26,7 @@ jobs:
       - name: Build with Maven
         run: mvn -B package
       - name: Rename artifacts
-        run: mv target/proxypass.jar target/proxypass.jar
+        run: mv target/proxypass-*.jar target/proxypass.jar
       - name: Archive artifacts
         uses: actions/upload-artifact@v1
         if: success()
