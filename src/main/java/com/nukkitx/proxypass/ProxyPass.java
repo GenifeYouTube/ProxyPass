@@ -51,7 +51,7 @@ public class ProxyPass {
         try {
             minecraftVersion = mainPackage.getImplementationVersion().split("-")[0];
         } catch (NullPointerException e) {
-            minecraftVersion = "0.0.0";
+            minecraftVersion = "1.16.200";
         }
         MINECRAFT_VERSION = minecraftVersion;
     }
