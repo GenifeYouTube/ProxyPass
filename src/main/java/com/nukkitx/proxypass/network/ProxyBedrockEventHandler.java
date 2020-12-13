@@ -7,16 +7,11 @@ import com.nukkitx.protocol.bedrock.BedrockServerSession;
 import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
 import lombok.extern.log4j.Log4j2;
-
-import br.com.azalim.mcserverping.MCPing;
-import br.com.azalim.mcserverping.MCPingOptions;
-import br.com.azalim.mcserverping.MCPingResponse;
-import br.com.azalim.mcserverping.MCPingResponse.Description;
-import br.com.azalim.mcserverping.MCPingResponse.Player;
-import br.com.azalim.mcserverping.MCPingResponse.Players;
-import br.com.azalim.mcserverping.MCPingResponse.Version;
+import net.defect.mc.stat.MCStatus;
+import net.defect.mc.stat.data.StatusData;
 
 
+import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import javax.annotation.Nonnull;
@@ -30,7 +25,11 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private final ProxyPass proxy;
 
 
-
+public static int getPlayerCount() throws IOException {
+    StatusData data = MCStatus.getStatus("localhost", 25565, MCStatus.Protocol.V1_16_1);
+    int online = data.getOnlinePlayers();
+    return online;
+}
 
 static {
         ADVERTISEMENT.setEdition("MCPE");
@@ -39,7 +38,7 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        ADVERTISEMENT.setPlayerCount(get());
+        ADVERTISEMENT.setPlayerCount(getPlayerCount());
     } catch (Exception e) {
         e.printStackTrace();
     }
