@@ -35,7 +35,7 @@ static {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd("hardcore-servers.net");
+        ADVERTISEMENT.setMotd("&4hardcore&f-&cservers.net");
     try {
         Timer timer = new Timer();
         int begin = 0;
