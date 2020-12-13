@@ -50,9 +50,9 @@ public class ProxyPass {
         String minecraftVersion;
 
         try {
-            minecraftVersion = CODEC.getMinecraftVersion();
+            minecraftVersion = "1.16.200";
         } catch (NullPointerException e) {
-            minecraftVersion = "0.0.0";
+            minecraftVersion = "1.16.200";
         }
         MINECRAFT_VERSION = minecraftVersion;
     }
