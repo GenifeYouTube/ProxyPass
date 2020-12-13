@@ -14,6 +14,7 @@ import com.tekgator.queryminecraftserver.api.QueryStatus;
 
 import java.net.InetSocketAddress;
 import java.util.Timer;
+import java.util.TimerTask;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -28,6 +29,7 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
 public static int getPlayersCount() throws QueryException {
     return new QueryStatus.Builder("play.hardcore-servers.net").build().getStatus().getPlayers().getOnlinePlayers();
 }
+
 static {
         ADVERTISEMENT.setEdition("MCPE");
         ADVERTISEMENT.setGameType("Survival");
@@ -35,10 +37,27 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        while(true){
-            ADVERTISEMENT.setPlayerCount(getPlayersCount());
-            Thread.sleep(10000);
-        }
+        Timer timer = new Timer();
+        int begin = 0;
+        int timeInterval = 1000;
+
+        timer.scheduleAtFixedRate(new TimerTask() {
+            @Override
+            public void run() {
+                while(true){
+                    try {
+                        ADVERTISEMENT.setPlayerCount(getPlayersCount());
+                    } catch (QueryException e) {
+                        e.printStackTrace();
+                    }
+                    try {
+                        Thread.sleep(10000);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        }, begin, timeInterval);
     } catch (Exception e) {
         e.printStackTrace();
     }
