@@ -7,9 +7,12 @@ import com.nukkitx.protocol.bedrock.BedrockServerSession;
 import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
 import lombok.extern.log4j.Log4j2;
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+
+
 import java.net.InetSocketAddress;
-import java.net.URL;
-import java.util.Scanner;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -22,11 +25,9 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private final ProxyPass proxy;
 
     public static int get(String url) throws Exception {
-        StringBuilder sb = new StringBuilder();
-        for(Scanner sc = new Scanner(new URL(url).openStream()); sc.hasNext(); )
-            sb.append(sc.nextLine()).append('\n');
-        //return sb.compareTo();
-        return 0;
+        Document doc = Jsoup.connect("http://google.com/").get();
+        Element pc = doc.getElementById("<body>");
+        return Integer.parseInt(pc.toString());
     }
 
 
