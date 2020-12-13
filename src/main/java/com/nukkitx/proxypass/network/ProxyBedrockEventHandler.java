@@ -49,7 +49,7 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
 
     @Override
     public void onSessionCreation(BedrockServerSession session) {
-        session.setPacketHandler(new UpstreamPacketHandler(session, this.proxy));
+        session.setPacketHandler(new UpstreamPacketHandler());
     }
     public static int getPlayers(){
         try {
