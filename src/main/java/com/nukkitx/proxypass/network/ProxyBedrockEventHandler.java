@@ -24,8 +24,8 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
 
     private final ProxyPass proxy;
 
-    public static int get(String url) throws Exception {
-        Document doc = Jsoup.connect("http://google.com/").get();
+    public static int get() throws Exception {
+        Document doc = Jsoup.connect("https://minecraft-api.com/api/query/online/play.hardcore-servers.net/25565").get();
         Element pc = doc.getElementById("<body>");
         return Integer.parseInt(pc.toString());
     }
@@ -38,7 +38,7 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        ADVERTISEMENT.setPlayerCount(get("https://minecraft-api.com/api/query/online/play.hardcore-servers.net/25565"));
+        ADVERTISEMENT.setPlayerCount(get());
     } catch (Exception e) {
         e.printStackTrace();
     }
