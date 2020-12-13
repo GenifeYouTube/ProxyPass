@@ -76,7 +76,7 @@ public class ProxyPass {
         ProxyPass proxy = new ProxyPass();
         try {
             proxy.boot();
-        } catch (IOException e) {
+        } catch (IOException | QueryException e) {
             throw new RuntimeException(e);
         }
     }
