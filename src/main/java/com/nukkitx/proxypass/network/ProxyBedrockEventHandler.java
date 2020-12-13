@@ -39,7 +39,7 @@ static {
     try {
         Timer timer = new Timer();
         int begin = 0;
-        int timeInterval = 1000;
+        int timeInterval = 10000;
 
         timer.scheduleAtFixedRate(new TimerTask() {
             @Override
