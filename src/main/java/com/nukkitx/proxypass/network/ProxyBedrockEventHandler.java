@@ -6,12 +6,12 @@ import com.nukkitx.protocol.bedrock.BedrockServerEventHandler;
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
 import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
+import com.tekgator.queryminecraftserver.api.QueryException;
 import lombok.extern.log4j.Log4j2;
-import net.defect.mc.stat.MCStatus;
-import net.defect.mc.stat.data.StatusData;
+import com.tekgator.queryminecraftserver.api.Protocol;
+import com.tekgator.queryminecraftserver.api.QueryStatus;
 
 
-import java.io.IOException;
 import java.net.InetSocketAddress;
 
 import javax.annotation.Nonnull;
@@ -24,13 +24,9 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
 
     private final ProxyPass proxy;
 
-
-public static int getPlayerCount() throws IOException {
-    StatusData data = MCStatus.getStatus("localhost", 25565, MCStatus.Protocol.V1_16_1);
-    int online = data.getOnlinePlayers();
-    return online;
+public static int getPlayersCount() throws QueryException {
+    return new QueryStatus.Builder("my-mcserver.com").build().getStatus().getPlayers().getOnlinePlayers();
 }
-
 static {
         ADVERTISEMENT.setEdition("MCPE");
         ADVERTISEMENT.setGameType("Survival");
@@ -38,7 +34,7 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        ADVERTISEMENT.setPlayerCount(getPlayerCount());
+        ADVERTISEMENT.setPlayerCount(getPlayersCount());
     } catch (Exception e) {
         e.printStackTrace();
     }
@@ -46,7 +42,7 @@ static {
         ADVERTISEMENT.setSubMotd("hardcore-servers.net");
     }
 
-    public ProxyBedrockEventHandler(ProxyPass proxy) {
+    public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {
         this.proxy = proxy;
         int port = this.proxy.getProxyAddress().getPort();
         ADVERTISEMENT.setIpv4Port(port);

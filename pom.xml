@@ -11,6 +11,10 @@
 
     <repositories>
         <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+        <repository>
             <id>nukkitx-repo</id>
             <url>https://repo.nukkitx.com/snapshot</url>
         </repository>
@@ -34,7 +38,15 @@
             <artifactId>dnsjava</artifactId>
             <version>2.1.8</version>
         </dependency>
-
+        <dependency>
+            <groupId>com.github.tekgator</groupId>
+            <artifactId>JAVA-QueryMinecraftServer</artifactId>
+            <version>1.1</version>
+        </dependency>
+        <dependency>
+            <groupId></groupId>
+            <artifactId></artifactId>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
