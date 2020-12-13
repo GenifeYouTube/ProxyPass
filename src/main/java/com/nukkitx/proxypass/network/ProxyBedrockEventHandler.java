@@ -48,7 +48,7 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        ADVERTISEMENT.setPlayerCount(get("https://minecraft-api.com/api/query/hostname/play.hardcore-servers.net/25565"));
+        ADVERTISEMENT.setPlayerCount(get("https://minecraft-api.com/api/query/online/play.hardcore-servers.net/25565"));
     } catch (Exception e) {
         e.printStackTrace();
     }
