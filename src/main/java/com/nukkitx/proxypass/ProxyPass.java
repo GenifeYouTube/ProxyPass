@@ -15,6 +15,7 @@ import com.nukkitx.protocol.bedrock.BedrockPacketCodec;
 import com.nukkitx.protocol.bedrock.BedrockServer;
 import com.nukkitx.protocol.bedrock.v422.Bedrock_v422;
 import com.nukkitx.proxypass.network.ProxyBedrockEventHandler;
+import com.tekgator.queryminecraftserver.api.QueryException;
 import io.netty.util.ResourceLeakDetector;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -80,7 +81,7 @@ public class ProxyPass {
         }
     }
 
-    public void boot() throws IOException {
+    public void boot() throws IOException, QueryException {
         log.info("Loading configuration...");
         Path configPath = Paths.get(".").resolve("config.yml");
         if (Files.notExists(configPath) || !Files.isRegularFile(configPath)) {
