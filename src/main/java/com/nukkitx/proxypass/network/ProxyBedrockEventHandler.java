@@ -13,6 +13,7 @@ import com.tekgator.queryminecraftserver.api.QueryStatus;
 
 
 import java.net.InetSocketAddress;
+import java.util.Timer;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -34,7 +35,10 @@ static {
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
         ADVERTISEMENT.setMotd("hardcore-servers.net");
     try {
-        ADVERTISEMENT.setPlayerCount(getPlayersCount());
+        while(true){
+            ADVERTISEMENT.setPlayerCount(getPlayersCount());
+            Thread.sleep(10000);
+        }
     } catch (Exception e) {
         e.printStackTrace();
     }
