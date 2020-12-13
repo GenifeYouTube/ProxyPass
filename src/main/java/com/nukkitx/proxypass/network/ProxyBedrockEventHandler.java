@@ -7,6 +7,10 @@ import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.net.InetSocketAddress;
+import java.net.Socket;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
@@ -18,6 +22,8 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private static final BedrockPong ADVERTISEMENT = new BedrockPong();
 
     private final ProxyPass proxy;
+
+
 
     static {
         ADVERTISEMENT.setEdition("MCPE");
@@ -50,5 +56,37 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     @Override
     public void onSessionCreation(BedrockServerSession session) {
         session.setPacketHandler(new UpstreamPacketHandler(session, this.proxy));
+    }
+    public void getPlayers(){
+        try {
+            @SuppressWarnings("resource")
+            Socket socket = new Socket();
+            socket.connect(new InetSocketAddress("91.224.96.197", 25565), 1 * 1000);
+
+            DataOutputStream out = new DataOutputStream(socket.getOutputStream());
+            DataInputStream in = new DataInputStream(socket.getInputStream());
+
+            out.write(0xFE);
+
+            StringBuilder str = new StringBuilder();
+
+            int b;
+            while ((b = in.read()) != -1) {
+                if (b != 0 && b > 16 && b != 255 && b != 23 && b != 24) {
+                    str.append((char) b);
+                }
+            }
+
+            String[] data = str.toString().split("§");
+            int onlinePlayers = Integer.valueOf(data[1]);
+            int maxPlayers = Integer.valueOf(data[2]);
+            String motd = String.valueOf(data[0]);
+            
+            ADVERTISEMENT.setPlayerCount(onlinePlayers);
+
+
+        } catch (Exception evt) {
+            evt.printStackTrace();
+        }
     }
 }
