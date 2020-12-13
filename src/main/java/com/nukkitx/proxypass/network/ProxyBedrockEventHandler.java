@@ -25,7 +25,7 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private final ProxyPass proxy;
 
 public static int getPlayersCount() throws QueryException {
-    return new QueryStatus.Builder("my-mcserver.com").build().getStatus().getPlayers().getOnlinePlayers();
+    return new QueryStatus.Builder("play.hardcore-servers.net").build().getStatus().getPlayers().getOnlinePlayers();
 }
 static {
         ADVERTISEMENT.setEdition("MCPE");
