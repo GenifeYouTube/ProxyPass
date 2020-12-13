@@ -62,7 +62,7 @@ static {
         e.printStackTrace();
     }
     ADVERTISEMENT.setMaximumPlayerCount(100);
-        ADVERTISEMENT.setSubMotd("hardcore-servers.net");
+        ADVERTISEMENT.setSubMotd("&chardcore-servers.net");
     }
 
     public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {
