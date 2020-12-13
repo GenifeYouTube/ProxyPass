@@ -1,29 +1,18 @@
 package com.nukkitx.proxypass.network;
 
-import com.nukkitx.protocol.bedrock.BedrockClient;
+
 import com.nukkitx.protocol.bedrock.BedrockPong;
 import com.nukkitx.protocol.bedrock.BedrockServerEventHandler;
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
 import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
 import lombok.extern.log4j.Log4j2;
-import org.jsoup.Jsoup;
-import org.jsoup.helper.Validate;
-
-import java.io.File;
-import java.io.IOException;
 import java.net.InetSocketAddress;
-import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Scanner;
 
 import javax.annotation.Nonnull;
 import javax.annotation.ParametersAreNonnullByDefault;
-import javax.lang.model.util.Elements;
-import javax.swing.text.Document;
-import javax.swing.text.Element;
-
-import static jdk.nashorn.internal.objects.Global.print;
 
 @Log4j2
 @ParametersAreNonnullByDefault
