@@ -35,7 +35,7 @@ static {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd(proxy.motd);
+        ADVERTISEMENT.setMotd(proxy.submotd);
     try {
         Timer timer = new Timer();
         int begin = 0;
@@ -62,7 +62,7 @@ static {
         e.printStackTrace();
     }
     ADVERTISEMENT.setMaximumPlayerCount(100);
-        ADVERTISEMENT.setSubMotd(proxy.motd);
+        ADVERTISEMENT.setSubMotd(proxy.submotd);
     }
 
     public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {
