@@ -22,6 +22,8 @@ public class Configuration {
 
     private Address proxy;
     private Address destination;
+    private Address players;
+    private String submotd;
 
     @JsonProperty("packet-testing")
     private boolean packetTesting = false;
@@ -31,6 +33,8 @@ public class Configuration {
     private int maxClients = 0;
     @JsonProperty("log-to")
     private LogTo logTo = LogTo.FILE;
+    @JsonProperty("motd")
+    private String motdstring = "";
 
     @JsonProperty("ignored-packets")
     private Set<String> ignoredPackets = Collections.emptySet();
