@@ -32,11 +32,15 @@ public class Configuration {
     private int maxClients = 0;
     @JsonProperty("log-to")
     private LogTo logTo = LogTo.FILE;
-    @JsonProperty("motd")
-    public String motd = "";
 
     @JsonProperty("ignored-packets")
     private Set<String> ignoredPackets = Collections.emptySet();
+
+    @JsonProperty("motd")
+    private String motd = "a";
+    public String getMotd(){
+        return motd;
+    }
 
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
