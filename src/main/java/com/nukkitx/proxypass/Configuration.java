@@ -23,7 +23,6 @@ public class Configuration {
     private Address proxy;
     private Address destination;
     private Address players;
-    private String submotd;
 
     @JsonProperty("packet-testing")
     private boolean packetTesting = false;
@@ -34,7 +33,7 @@ public class Configuration {
     @JsonProperty("log-to")
     private LogTo logTo = LogTo.FILE;
     @JsonProperty("motd")
-    private final String motdstring = "";
+    public final String submotd = "";
 
     @JsonProperty("ignored-packets")
     private Set<String> ignoredPackets = Collections.emptySet();
@@ -53,6 +52,11 @@ public class Configuration {
         try (BufferedWriter writer = Files.newBufferedWriter(path, StandardOpenOption.CREATE, StandardOpenOption.TRUNCATE_EXISTING)) {
             ProxyPass.YAML_MAPPER.writerWithDefaultPrettyPrinter().writeValue(writer, configuration);
         }
+    }
+
+
+    public void setSubmotd(String submotd) {
+        this.submotd = submotd;
     }
 
     @Getter
