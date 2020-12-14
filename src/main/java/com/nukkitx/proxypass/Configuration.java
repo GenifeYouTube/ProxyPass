@@ -37,7 +37,7 @@ public class Configuration {
     private Set<String> ignoredPackets = Collections.emptySet();
 
     @JsonProperty("motd")
-    private String motd;
+    private String motd = "ProxyPass";
 
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
@@ -55,7 +55,9 @@ public class Configuration {
         }
     }
 
-
+    public String getMotd(){
+        return this.motd;
+    }
 
     @Getter
     @ToString
