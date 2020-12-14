@@ -34,7 +34,7 @@ public class Configuration {
     @JsonProperty("log-to")
     private LogTo logTo = LogTo.FILE;
     @JsonProperty("motd")
-    private String motdstring = "";
+    private final String motdstring = "";
 
     @JsonProperty("ignored-packets")
     private Set<String> ignoredPackets = Collections.emptySet();

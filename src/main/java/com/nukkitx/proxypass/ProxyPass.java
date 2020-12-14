@@ -91,12 +91,12 @@ public class ProxyPass {
         }
 
         configuration = Configuration.load(configPath);
-
+        motd = configuration.getSubmotd();
         proxyAddress = configuration.getProxy().getAddress();
         targetAddress = configuration.getDestination().getAddress();
         maxClients = configuration.getMaxClients();
         online = configuration.getPlayers().getAddress();
-        motd = configuration.getSubmotd();
+
 
 
         configuration.getIgnoredPackets().forEach(s -> {
