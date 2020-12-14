@@ -24,10 +24,10 @@ import javax.annotation.ParametersAreNonnullByDefault;
 public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private static final BedrockPong ADVERTISEMENT = new BedrockPong();
 
-    private final ProxyPass proxy;
+    private static ProxyPass proxy;
 
 public static int getPlayersCount() throws QueryException {
-    return new QueryStatus.Builder("my-mcserver.com").build().getStatus().getPlayers().getOnlinePlayers();
+    return new QueryStatus.Builder(proxy.online.toString()).build().getStatus().getPlayers().getOnlinePlayers();
 }
 
 static {
@@ -35,7 +35,7 @@ static {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd("hardcore-servers.net");
+        ADVERTISEMENT.setMotd(proxy.motd);
     try {
         Timer timer = new Timer();
         int begin = 0;
@@ -62,7 +62,7 @@ static {
         e.printStackTrace();
     }
     ADVERTISEMENT.setMaximumPlayerCount(100);
-        ADVERTISEMENT.setSubMotd("hardcore-servers.net");
+        ADVERTISEMENT.setSubMotd(proxy.motd);
     }
 
     public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {
