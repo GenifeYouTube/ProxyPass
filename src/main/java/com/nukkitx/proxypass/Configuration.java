@@ -37,10 +37,7 @@ public class Configuration {
     private Set<String> ignoredPackets = Collections.emptySet();
 
     @JsonProperty("motd")
-    private String motd = "a";
-    public String getMotd(){
-        return motd;
-    }
+    private Set<String> motd = Collections.emptySet();
 
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
