@@ -64,7 +64,7 @@ static {
         e.printStackTrace();
     }
     ADVERTISEMENT.setMaximumPlayerCount(100);
-        ADVERTISEMENT.setSubMotd(config.getMotd());
+        ADVERTISEMENT.setSubMotd(ProxyPass.submotd);
     }
 
     public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {

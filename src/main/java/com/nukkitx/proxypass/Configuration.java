@@ -38,7 +38,10 @@ public class Configuration {
 
     @JsonProperty("motd")
     private String motd = "ProxyPass";
-
+    
+    public String getMotd(){
+        return this.motd;
+    }
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             return ProxyPass.YAML_MAPPER.readValue(reader, Configuration.class);
@@ -55,9 +58,7 @@ public class Configuration {
         }
     }
 
-    public String getMotd(){
-        return this.motd;
-    }
+
 
     @Getter
     @ToString
