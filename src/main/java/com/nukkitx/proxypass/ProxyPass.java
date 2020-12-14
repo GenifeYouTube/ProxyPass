@@ -95,7 +95,7 @@ public class ProxyPass {
         proxyAddress = configuration.getProxy().getAddress();
         targetAddress = configuration.getDestination().getAddress();
         maxClients = configuration.getMaxClients();
-        online = configuration.getPonline().getAddress;
+        online = configuration.getPlayers().getAddress;
         motd = configuration.getSubmotd();
 
 

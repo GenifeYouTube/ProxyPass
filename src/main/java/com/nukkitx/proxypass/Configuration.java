@@ -22,7 +22,7 @@ public class Configuration {
 
     private Address proxy;
     private Address destination;
-    private Address ponline;
+    private Address players;
     private String submotd;
 
     @JsonProperty("packet-testing")
