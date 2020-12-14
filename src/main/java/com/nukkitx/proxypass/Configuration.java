@@ -33,7 +33,7 @@ public class Configuration {
     @JsonProperty("log-to")
     private LogTo logTo = LogTo.FILE;
     @JsonProperty("motd")
-    public String submotd = "";
+    public String motd = "";
 
     @JsonProperty("ignored-packets")
     private Set<String> ignoredPackets = Collections.emptySet();
@@ -55,9 +55,6 @@ public class Configuration {
     }
 
 
-    public void setSubmotd(String submotd) {
-        this.submotd = submotd;
-    }
 
     @Getter
     @ToString

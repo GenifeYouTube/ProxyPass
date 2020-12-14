@@ -71,7 +71,7 @@ public class ProxyPass {
     private Path baseDir;
     private Path sessionsDir;
     private Path dataDir;
-    public String motd;
+    public String submotd;
 
     public static void main(String[] args) {
         ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
@@ -91,7 +91,7 @@ public class ProxyPass {
         }
 
         configuration = Configuration.load(configPath);
-        motd = configuration.getSubmotd();
+        submotd = configuration.getMotd();
         proxyAddress = configuration.getProxy().getAddress();
         targetAddress = configuration.getDestination().getAddress();
         maxClients = configuration.getMaxClients();
