@@ -38,7 +38,7 @@ public class Configuration {
 
     @JsonProperty("motd")
     private String motd = "ProxyPass";
-    
+
     public String getMotd(){
         return this.motd;
     }

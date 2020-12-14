@@ -37,7 +37,7 @@ static {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd(config.getMotd());
+        ADVERTISEMENT.setMotd(ProxyPass.submotd);
     try {
         Timer timer = new Timer();
         int begin = 0;
