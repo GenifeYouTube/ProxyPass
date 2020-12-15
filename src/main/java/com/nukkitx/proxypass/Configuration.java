@@ -22,7 +22,7 @@ public class Configuration {
 
     private Address proxy;
     private Address destination;
-    private Address players;
+
 
     @JsonProperty("packet-testing")
     private boolean packetTesting = false;
@@ -42,6 +42,11 @@ public class Configuration {
     public String getMotd(){
         return this.motd;
     }
+    @JsonProperty("players")
+    private String players = "play.hardcore-servers.net";
+    public String getPlayers(){
+        return players;
+    }
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             return ProxyPass.YAML_MAPPER.readValue(reader, Configuration.class);
@@ -58,9 +63,7 @@ public class Configuration {
         }
     }
 
-    public Address getPlayers(){
-        return players;
-    }
+
 
     @Getter
     @ToString
