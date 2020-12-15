@@ -66,7 +66,7 @@ public class ProxyPass {
     private final Set<Class<?>> ignoredPackets = Collections.newSetFromMap(new IdentityHashMap<>());
     private InetSocketAddress targetAddress;
     private InetSocketAddress proxyAddress;
-    public static InetSocketAddress online;
+    public InetSocketAddress online;
     private Configuration configuration;
     private Path baseDir;
     private Path sessionsDir;
@@ -94,7 +94,7 @@ public class ProxyPass {
         proxyAddress = configuration.getProxy().getAddress();
         targetAddress = configuration.getDestination().getAddress();
         maxClients = configuration.getMaxClients();
-        online = configuration.getPlayers().getAddress();
+        online = configuration.getPlayers().getPAddress();
         submotd = configuration.getMotd();
 
 

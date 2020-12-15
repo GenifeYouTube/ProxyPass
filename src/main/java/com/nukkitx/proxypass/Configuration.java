@@ -22,7 +22,7 @@ public class Configuration {
 
     private Address proxy;
     private Address destination;
-    private Address players;
+    private PAddress players;
 
     @JsonProperty("packet-testing")
     private boolean packetTesting = false;
@@ -59,6 +59,13 @@ public class Configuration {
     }
 
 
+    @Getter
+    @ToString
+    public static class PAddress{
+        private String phost;
+        private int pport;
+        InetSocketAddress getPAddress(){return new InetSocketAddress(phost, pport);}
+    }
 
     @Getter
     @ToString
