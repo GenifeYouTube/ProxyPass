@@ -4,6 +4,7 @@ package com.nukkitx.proxypass.network;
 import com.nukkitx.protocol.bedrock.BedrockPong;
 import com.nukkitx.protocol.bedrock.BedrockServerEventHandler;
 import com.nukkitx.protocol.bedrock.BedrockServerSession;
+import com.nukkitx.proxypass.Configuration;
 import com.nukkitx.proxypass.ProxyPass;
 import com.nukkitx.proxypass.network.bedrock.session.UpstreamPacketHandler;
 import com.tekgator.queryminecraftserver.api.QueryException;
@@ -25,9 +26,10 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private static final BedrockPong ADVERTISEMENT = new BedrockPong();
 
     private static ProxyPass proxy;
+    private static Configuration config;
 
 public static int getPlayersCount() throws QueryException {
-    return new QueryStatus.Builder(proxy.online.toString()).build().getStatus().getPlayers().getOnlinePlayers();
+    return new QueryStatus.Builder(proxy.online).setPort(proxy.pPort).setProtocol(Protocol.TCP).build().getStatus().getPlayers().getOnlinePlayers();
 }
 
 static {
@@ -35,7 +37,7 @@ static {
         ADVERTISEMENT.setGameType("Survival");
         ADVERTISEMENT.setVersion(ProxyPass.MINECRAFT_VERSION);
         ADVERTISEMENT.setProtocolVersion(ProxyPass.PROTOCOL_VERSION);
-        ADVERTISEMENT.setMotd(proxy.submotd);
+        ADVERTISEMENT.setMotd(ProxyPass.submotd);
     try {
         Timer timer = new Timer();
         int begin = 0;
@@ -62,7 +64,7 @@ static {
         e.printStackTrace();
     }
     ADVERTISEMENT.setMaximumPlayerCount(100);
-        ADVERTISEMENT.setSubMotd(proxy.submotd);
+        ADVERTISEMENT.setSubMotd(ProxyPass.submotd);
     }
 
     public ProxyBedrockEventHandler(ProxyPass proxy) throws QueryException {

@@ -66,12 +66,13 @@ public class ProxyPass {
     private final Set<Class<?>> ignoredPackets = Collections.newSetFromMap(new IdentityHashMap<>());
     private InetSocketAddress targetAddress;
     private InetSocketAddress proxyAddress;
-    public static InetSocketAddress online;
+    public String online;
     private Configuration configuration;
     private Path baseDir;
     private Path sessionsDir;
     private Path dataDir;
-    public String submotd;
+    public static String submotd;
+    public int pPort;
 
     public static void main(String[] args) {
         ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
@@ -91,12 +92,12 @@ public class ProxyPass {
         }
 
         configuration = Configuration.load(configPath);
-        submotd = configuration.getMotd();
         proxyAddress = configuration.getProxy().getAddress();
         targetAddress = configuration.getDestination().getAddress();
         maxClients = configuration.getMaxClients();
-        online = configuration.getPlayers().getAddress();
-
+        online = configuration.getPlayers();
+        submotd = configuration.getMotd();
+        pPort = configuration.getPlayerport();
 
 
         configuration.getIgnoredPackets().forEach(s -> {

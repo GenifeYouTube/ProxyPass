@@ -7,9 +7,8 @@ proxy:
 destination:
   host: 127.0.0.1
   port: 19132
-players:
-  host: 127.0.0.1
-  port: 19132
+players: play.hardcore-servers.net
+player-port: 19132
 ## Maximum of clients which can connect to ProxyPass. If this should be disabled, set it to 0.
 max-clients: 0
 ## Encode and decode packets to test protocol library for bugs
@@ -19,8 +18,6 @@ log-packets: true
 ## Where to log packet data
 ## Valid options: console, file or both
 log-to: file
-##Motd
-motd: nigga
 ## Packets to ignore to make your log more refined. These default packet are generally spammed
 ignored-packets:
   - "NetworkStackLatencyPacket"
@@ -30,3 +27,5 @@ ignored-packets:
   - "NetworkChunkPublisherUpdatePacket"
   - "ClientCacheBlobStatusPacket"
   - "ClientCacheMissResponsePacket"
+##Motd
+motd: ProxyPass
