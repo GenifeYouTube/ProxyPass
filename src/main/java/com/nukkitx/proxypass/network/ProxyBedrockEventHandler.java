@@ -29,7 +29,7 @@ public class ProxyBedrockEventHandler implements BedrockServerEventHandler {
     private static Configuration config;
 
 public static int getPlayersCount() throws QueryException {
-    return new QueryStatus.Builder(proxy.online).build().getStatus().getPlayers().getOnlinePlayers();
+    return new QueryStatus.Builder(proxy.online).setPort(19132).build().getStatus().getPlayers().getOnlinePlayers();
 }
 
 static {

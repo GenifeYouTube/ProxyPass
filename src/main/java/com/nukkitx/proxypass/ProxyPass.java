@@ -72,6 +72,7 @@ public class ProxyPass {
     private Path sessionsDir;
     private Path dataDir;
     public static String submotd;
+    public int pPort;
 
     public static void main(String[] args) {
         ResourceLeakDetector.setLevel(ResourceLeakDetector.Level.PARANOID);
@@ -96,6 +97,7 @@ public class ProxyPass {
         maxClients = configuration.getMaxClients();
         online = configuration.getPlayers();
         submotd = configuration.getMotd();
+        pPort = configuration.getPlayerport();
 
 
         configuration.getIgnoredPackets().forEach(s -> {
