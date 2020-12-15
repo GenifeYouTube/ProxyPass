@@ -52,6 +52,13 @@ public class Configuration {
     public int getPlayerport(){
         return playerport;
     }
+    @JsonProperty("player-update")
+    private int pUpdate = 10;
+
+    public int getpUpdate() {
+        return pUpdate;
+    }
+
     public static Configuration load(Path path) throws IOException {
         try (BufferedReader reader = Files.newBufferedReader(path)) {
             return ProxyPass.YAML_MAPPER.readValue(reader, Configuration.class);
